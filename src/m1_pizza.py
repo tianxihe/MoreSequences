@@ -29,7 +29,7 @@ def main():
 
     run_test_generate_points_on_circle()
 
-    # run_test_draw_points_on_circle()
+    run_test_draw_points_on_circle()
     # run_test_pizza()
     # run_test_polygon()
     # run_test_fancy_polygon()
@@ -175,6 +175,12 @@ def run_test_draw_points_on_circle():
     # ------------------------------------------------------------------
     # Test 4:  (YOU write THIS test)
     # ------------------------------------------------------------------
+    # Test 4:
+    title = 'DRAW_POINTS_ON_CIRCLE, test 4:  7 yellow dots.'
+    window = rg.RoseWindow(400, 400, title)
+    circle = rg.Circle(rg.Point(200, 200), 150)
+    draw_points_on_circle(window, circle, 7, 'yellow')
+    window.close_on_mouse_click()
 
 
 def draw_points_on_circle(window, circle, number_of_points, color):
@@ -212,6 +218,25 @@ def draw_points_on_circle(window, circle, number_of_points, color):
       :type number_of_points: int
       :type color:            str
     """
+    circle.attach_to(window)
+    points=generate_points_on_circle(circle, number_of_points)
+
+    for k in range(number_of_points):
+        new_circle=rg.Circle(points[k],10)
+        point=new_circle.center
+        new_circle.attach_to(window)
+        new_circle.fill_color=color
+        point.attach_to(window)
+
+    window.render()
+
+
+
+
+
+
+
+
     # ------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
